@@ -1,5 +1,6 @@
 package com.example.store_server;
 
+import com.example.store_server.Pojo.CustomerLevel;
 import com.example.store_server.Pojo.User;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -14,6 +15,12 @@ class StoreServerApplicationTests {
     void userUnitTest() {
         User user = new User(1,"1","1","1");
         System.out.println(user.toString());
+    }
+
+    @Test
+    void CustomerLevelUnitTest() {
+        CustomerLevel level = CustomerLevel.gold;
+        System.out.println(level.ordinal());
     }
 
     @Test

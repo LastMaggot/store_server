@@ -3,7 +3,9 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTCreator;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.example.store_server.Pojo.User;
+import org.springframework.stereotype.Component;
 
+@Component
 public interface JWTUtil {
 
     /**

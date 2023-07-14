@@ -1,11 +1,20 @@
 package com.example.store_server.Pojo;
-import java.sql.Date;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.apache.ibatis.annotations.Property;
+
+import java.util.Date;
 
 public class Customer extends User {
+    @JsonProperty("level")
     private CustomerLevel level;
+    @JsonProperty("registrationDate")
     private Date registrationDate;
+    @JsonProperty("totalSpent")
     private Double totalSpent;
+    @JsonProperty("phoneNumber")
     private String phoneNumber;
+    @JsonProperty("email")
     private String email;
 
     public CustomerLevel getLevel() {
@@ -48,6 +57,19 @@ public class Customer extends User {
         this.email = email;
     }
 
+    public Boolean isValid() {
+        if(getAccount() == null) {
+            return false;
+        }
+        if(getPassword() == null) {
+            return false;
+        }
+        if(getEmail() == null) {
+            return  false;
+        }
+        return true;
+    }
+
     @Override
     public String toString() {
         return "Customer{" +
@@ -59,7 +81,17 @@ public class Customer extends User {
                 '}';
     }
 
-    public Customer(Integer id, String account, String userName, String password, CustomerLevel level, Date registrationDate, Double totalSpent, String phoneNumber, String email) {
+    public Customer() {
+    }
+
+    public Customer(
+            Integer id, String account, String userName, String password,
+            CustomerLevel level,
+            Date registrationDate,
+            Double totalSpent,
+            String phoneNumber,
+            String email
+    ) {
         super(id, account, userName, password);
         this.level = level;
         this.registrationDate = registrationDate;
@@ -67,5 +99,4 @@ public class Customer extends User {
         this.phoneNumber = phoneNumber;
         this.email = email;
     }
-
 }

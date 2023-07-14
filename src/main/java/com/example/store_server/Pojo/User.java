@@ -1,16 +1,27 @@
 package com.example.store_server.Pojo;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
+
 import java.util.Objects;
 
+@Data
 public class User {
+    @JsonProperty("id")
     private Integer id;
+    @JsonProperty("account")
     private String account;
-    private String userName;
+    @JsonProperty("username")
+    private String username;
+    @JsonProperty("password")
     private String password;
+
+    public User() {
+    }
 
     public User(Integer id, String account, String userName, String password) {
         this.id = id;
         this.account = account;
-        this.userName = userName;
+        this.username = userName;
         this.password = password;
     }
 
@@ -30,12 +41,12 @@ public class User {
         this.account = account;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -51,7 +62,7 @@ public class User {
         return "User{" +
                 "id=" + id +
                 ", account='" + account + '\'' +
-                ", userName='" + userName + '\'' +
+                ", userName='" + username + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }

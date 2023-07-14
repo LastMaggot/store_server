@@ -6,10 +6,8 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.example.store_server.Pojo.User;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
 import java.util.Calendar;
 
-@Service
 public class JWTUtilImp implements JWTUtil {
 
     @Value("${jwt.secret}")
