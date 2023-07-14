@@ -12,8 +12,8 @@ class StoreServerApplicationTests {
 
     @Test
     void userUnitTest() {
-        User user = new User();
-        log.debug(user.toString());
+        User user = new User(1,"1","1","1");
+        System.out.println(user.toString());
     }
 
     @Test
