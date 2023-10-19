@@ -1,7 +1,6 @@
 package com.example.store_server.Pojo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.apache.ibatis.annotations.Property;
 
 import java.util.Date;
 
@@ -73,6 +72,7 @@ public class Customer extends User {
     @Override
     public String toString() {
         return "Customer{" +
+                super.toString() +
                 "level=" + level +
                 ", registrationDate=" + registrationDate +
                 ", totalSpent=" + totalSpent +
