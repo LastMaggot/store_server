@@ -3,6 +3,7 @@ package com.example.store_server.Service.CartService;
 import com.example.store_server.Pojo.Goods;
 import com.example.store_server.Service.CartService.CartService;
 import com.example.store_server.dao.CartMapper.CartMapper;
+import com.example.store_server.dao.GoodsMapper.GoodsMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,10 @@ import java.util.List;
 public class CartServiceImp implements CartService {
     @Autowired
     CartMapper cartMapper;
+
+    @Autowired
+    GoodsMapper goodsMapper;
+
 
     @Override
     public List<Goods> getCartGoods(
@@ -48,5 +53,14 @@ public class CartServiceImp implements CartService {
             e.printStackTrace();
             return false;
         }
+    }
+
+    @Override
+    public void buy(Integer cart_id,Integer goods_id, Integer num) {
+            Goods goods = goodsMapper.getById(goods_id);
+            if(goods.getInventory() < num) throw new RuntimeException("库存不足");
+            cartMapper.deleteFromCart(cart_id);
+            cartMapper.deleteGoodsInventory(goods_id,num);
+            return;
     }
 }

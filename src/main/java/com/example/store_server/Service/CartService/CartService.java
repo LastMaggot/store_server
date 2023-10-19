@@ -31,4 +31,6 @@ public interface CartService {
      * @return
      */
     public Boolean deleteFromCart(Integer id);
+
+    public void buy(Integer cart_id,Integer goods_id, Integer num);
 }

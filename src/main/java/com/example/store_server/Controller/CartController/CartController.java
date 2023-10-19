@@ -5,6 +5,7 @@ import com.example.store_server.Pojo.Result;
 import com.example.store_server.Service.CartService.CartService;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,6 +41,19 @@ public class CartController {
             return Result.dataBaseConnectionFailure();
         } else {
             return Result.success("移除成功");
+        }
+    }
+
+    @PutMapping("/buy")
+    public Result buy(@NonNull @RequestParam(name = "cart_id") Integer id,
+            @NonNull @RequestParam(name =
+            "goods_id") Integer goods_id, @RequestParam(name = "num") Integer num) {
+        try{
+            cartService.buy(id, goods_id, num);
+            return Result.success();
+        }catch (Exception e) {
+            e.printStackTrace();
+            return Result.error(e.getMessage());
         }
     }
 }

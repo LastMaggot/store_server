@@ -21,4 +21,8 @@ public interface CartMapper {
     @Delete("delete from user_goods where user_goods.id = #{id}")
     public void deleteFromCart(@Param("id") Integer id );
 
+    @Update("update goods set inventory = inventory - #{num} where id = " +
+            "#{goods_id}")
+    public void deleteGoodsInventory(@Param("goods_id") Integer goods_id,
+            @Param("num") Integer num );
 }
