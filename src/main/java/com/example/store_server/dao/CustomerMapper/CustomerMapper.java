@@ -38,4 +38,18 @@ public interface CustomerMapper {
             "totalSpent, email from user where user.token = #{token}")
     public Customer loginByToken(@Param("token") String token);
 
+    @Update("update user SET " +
+            "    account = #{account}, " +
+            "    password = #{password}, " +
+            "    username = #{username}, " +
+            "    address = #{address}, " +
+            "    email = #{email} " +
+            "where id = #{id} " )
+    public Boolean updateUserInfo(@Param("id") Integer id,
+            @Param("account") String account,
+            @Param("password") String password,
+            @Param("username") String username,
+            @Param("address") String address,
+            @Param("email") String email);
+
 }

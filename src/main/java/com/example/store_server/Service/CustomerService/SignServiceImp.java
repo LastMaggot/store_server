@@ -73,7 +73,18 @@ public class SignServiceImp implements SignService {
     @Override
     public Customer loginByToken(String token) {
         Customer customer = customerMapper.loginByToken(token);
-        System.out.println(customer.toString());
         return customer;
+    }
+
+    @Override
+    public void updateUserInfo(Customer customer) {
+        Integer id = customer.getId();
+        String account = customer.getAccount();
+        String password = customer.getPassword();
+        String username = customer.getUsername();
+        String address = customer.getAddress();
+        String email = customer.getEmail();
+        customerMapper.updateUserInfo(id,account,password,username,address,
+                                      email);
     }
 }

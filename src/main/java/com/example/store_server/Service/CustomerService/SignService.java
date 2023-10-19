@@ -36,4 +36,6 @@ public interface SignService {
     public String forgetPassword(String account, String email);
 
     public Customer loginByToken(String token);
+
+    public void updateUserInfo(Customer customer);
 }

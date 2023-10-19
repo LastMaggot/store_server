@@ -74,14 +74,23 @@ public class SignController {
         try {
             System.out.println(token);
             Customer customer = signService.loginByToken(token);
-            if(customer == null) {
-                throw new SQLException();
-            }
+            if(customer == null) return Result.error("Token过期");
             System.out.println(customer.toString());
             return Result.success("登入成功",customer);
         }catch (Exception e) {
             e.printStackTrace();
             return Result.error("Token过期");
+        }
+    }
+
+    @PutMapping("/updateUserInfo")
+    public Result updateUserInfo(@NonNull @RequestBody Customer customer) {
+        try {
+            System.out.println(customer.toString());
+            signService.updateUserInfo(customer);
+            return Result.success();
+        }catch (Exception e) {
+            return Result.dataBaseConnectionFailure();
         }
     }
 }

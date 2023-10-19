@@ -13,8 +13,18 @@ public class Customer extends User {
     private Double totalSpent;
     @JsonProperty("phoneNumber")
     private String phoneNumber;
+    @JsonProperty("address")
+    private String address;
     @JsonProperty("email")
     private String email;
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
     public CustomerLevel getLevel() {
         return level;
@@ -90,6 +100,7 @@ public class Customer extends User {
             Date registrationDate,
             Double totalSpent,
             String phoneNumber,
+            String address,
             String email
     ) {
         super(id, account, userName, password);
@@ -97,6 +108,7 @@ public class Customer extends User {
         this.registrationDate = registrationDate;
         this.totalSpent = totalSpent;
         this.phoneNumber = phoneNumber;
+        this.address = address;
         this.email = email;
     }
 }
